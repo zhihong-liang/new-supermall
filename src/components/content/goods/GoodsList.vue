@@ -5,6 +5,7 @@
 </template>
 <script>
   import GoodsListItem from './GoodsListItem'
+  import BScroll from 'better-scroll'
 
 export default {
   name: 'GoodsList',
@@ -18,7 +19,7 @@ export default {
         return []
       }
     }
-  }
+  },
 }
 </script>
 <style scoped>
