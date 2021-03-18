@@ -38,7 +38,10 @@ export default {
     // 2.监听滚动的位置
     if (this.probeType === 2 || this.probeType === 3) {
       this.scroll.on("scroll", (position) => {
-        this.$emit("backtopshow", position);
+        if(this.$route.path.indexOf('/home') === 0){
+          this.$emit("backtopshow", position);
+        } else if(this.$route.path.indexOf('/home') !== 0)
+          this.$emit("backtopshow", position);
       });
     }
 
@@ -57,14 +60,13 @@ export default {
     },
     refresh() {
       this.scroll && this.scroll.refresh();
-      console.log('---');
     },
     finishPullUp() {
       this.scroll && this.scroll.finishPullUp();
     },
     getScrollY() {
-      return this.scroll ? this.scroll.y : 0
-    }
+      return this.scroll ? this.scroll.y : 0;
+    },
   },
 };
 </script>

@@ -1,4 +1,5 @@
-import {debounce} from './utils'
+import { debounce } from './utils'
+import BackTop from "components/content/backTop/BackTop";
 
 export const itemListenerMixin = {
   data() {
@@ -14,4 +15,22 @@ export const itemListenerMixin = {
     this.$bus.$on('itemImgLoad', this.itemImgListener)
     console.log('我是混入中的内容');
   }
+}
+
+export const backTopMixin = {
+  components: {
+    BackTop
+  },
+  data() {
+    return {
+      backupshow: false,
+    }
+  },
+  methods: {
+    // 点击回到顶部
+    backtopClick() {
+      this.$refs.scroll.scrollTo(0, 0);
+    },
+  },
+
 }

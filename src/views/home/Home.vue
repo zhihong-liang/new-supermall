@@ -56,10 +56,9 @@ import NavBar from "components/common/navbar/NavBar.vue";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
 import Scroll from "components/common/scroll/Scroll";
-import BackTop from "components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
-import {itemListenerMixin} from "common/mixin"
+import {itemListenerMixin, backTopMixin} from "common/mixin"
 import { debounce } from "common/utils.js";
 
 export default {
@@ -72,7 +71,6 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
-    BackTop,
   },
   data() {
     return {
@@ -92,7 +90,7 @@ export default {
     };
   },
   // mixin 混入
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   
   computed: {
     showGoods() {
@@ -117,7 +115,6 @@ export default {
     //   refresh();
     // }
 
-    // // this.$bus.$on("homeitemImageLoad", this.ItemImgListener);
     // this.$bus.$on("itemImageLoad", this.ItemImgListener);
   },
   // 组件重新活跃时回到离开前的滚动位置
@@ -173,9 +170,9 @@ export default {
       this.$refs.tabControl2.currentIndex = index;
     },
     // 点击回到顶部
-    backtopClick() {
-      this.$refs.scroll.scrollTo(0, 0);
-    },
+    // backtopClick() {
+    //   this.$refs.scroll.scrollTo(0, 0);
+    // },
     // "点击回顶部"组件的显示和隐藏
     backtopshow(position) {
       // 1.判断 BackTop 是否显示

@@ -1,5 +1,5 @@
 <template>
-  <div class="slide">
+  <div class="Boss-slide" ref="slide">
     <slot></slot>
   </div>
 </template>
@@ -11,12 +11,12 @@
 </script>
 
 <style scoped>
-  .slide {
+  .Boss-slide {
     width: 100%;
     flex-shrink: 0;
   }
 
-  .slide img {
+  .Boss-slide img {
     width: 100%;
   }
 </style>
