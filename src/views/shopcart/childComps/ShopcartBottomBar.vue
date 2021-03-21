@@ -2,14 +2,15 @@
   <div class="bottom-bar">
     <div class="check-content">
       <check-buttom class="button"
-                    @click.native="selectAll"
-                    :isChecked="ischecked"></check-buttom>
+                    :is-checked="isSelectAll"
+                    @click.native="AllselectClick">
+      </check-buttom>
       <span>全选</span>
     </div>
     <div class="price">
       合计：￥{{totalPrice}}
     </div>
-    <div class="calculate">
+    <div class="calculate" @click="calcClick">
       去计算：{{checkLength}}
     </div>
   </div>
@@ -19,13 +20,10 @@ import CheckButtom from "components/content/checkButton/CheckButton";
 
 import { mapGetters } from 'vuex'
 
+// @click.native="selectAll"
+
 export default {
   name: "ShopcartBottomBar",
-  data() {
-    return {
-      ischecked: false
-    }
-  },
   components: {
     CheckButtom,
   },
@@ -41,14 +39,45 @@ export default {
     checkLength() {
       return this.cartList.filter(item => item.checked).length
     },
+    isSelectAll() {
+      if(this.cartList.length === 0)  return false;
+
+      // 1.使用 filter
+      // return !this.cartList.filter(() => {return !this.cartList.checked}).length
+
+      // 2.使用 find
+      return !this.cartList.find(item => {return item.checked === false})
+
+      // 3.普通遍历
+      // for(let item of this.cartList) {
+      //   if(item.checked === false) {
+      //     return false
+      //   }
+      // }
+      // return true
+    }
   },
   methods: {
-    selectAll() {
-      for(let i in this.cartList) {
-        this.cartList[i].checked = true;
+    AllselectClick() {
+      if (this.isSelectAll) { //全部选中
+        this.cartList.forEach(item => item.checked = false)
+      } else {
+        this.cartList.forEach(item => item.checked = true)
       }
-      this.ischecked = true
+    },
+    calcClick() {
+      if(this.cartList.find(item => {return item.checked === true})){
+        this.$toast.show('现在前去结账~')
+      } else {
+        this.$toast.show('请选择商品')
+      }
     }
+    // selectAll() {
+    //   for(let i in this.cartList) {
+    //     this.cartList[i].checked = true;
+    //   }
+    //   this.ischecked = true
+    // }
   }
 };
 </script>
