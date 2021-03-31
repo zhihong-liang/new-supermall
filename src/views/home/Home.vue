@@ -199,6 +199,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+  touch-action: pan-y;
+}
 #home {
   /* padding-top: 44px; */
   height: 100vh;

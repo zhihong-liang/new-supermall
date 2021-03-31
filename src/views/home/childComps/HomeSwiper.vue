@@ -1,6 +1,6 @@
 <template>
   <swiper>
-    <swiper-item v-for="(item, index) in homebanners" :key="index">
+    <swiper-item v-for="(item, index) in homebanners" :key="index" ref="slide">
       <a :href="item.link">
         <img :src="item.image" alt="" @load="imageLoad" />
       </a>

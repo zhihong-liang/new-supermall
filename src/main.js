@@ -16,7 +16,7 @@ Vue.use(toast);
 FastClick.attach(document.body)
 
 // 使用懒加载的插件
-Vue.use(lazyload)
+// Vue.use(lazyload)
 
 Vue.prototype.$bus = new Vue()
 

@@ -33,5 +33,7 @@ export default {
 
   .center {
     flex: 1;
+    font-size: 16px;
+    font-weight: bolder;
   }
 </style>

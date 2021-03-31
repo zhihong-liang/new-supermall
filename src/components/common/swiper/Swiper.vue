@@ -14,8 +14,9 @@
 </template>
 
 <script>
+
 	export default {
-		name: "Swiper",
+    name: "Swiper",
     props: {
       interval: {
 		    type: Number,
@@ -50,7 +51,7 @@
 
         // 2.开启定时器
         this.startTimer();
-      }, 3000)
+      }, 300)
     },
     methods: {
 		  /**
@@ -116,10 +117,13 @@
       /**
        * 操作DOM, 在DOM前后添加Slide
        */
-		  handleDom: function () {
+		  handleDom() {
         // 1.获取要操作的元素
+        // let swiperEl = document.querySelector('.swiper');
         let swiperEl = this.$refs.swiper;
-        let slidesEls = swiperEl.getElementsByClassName('Boss-slide');
+
+        // let slidesEls = swiperEl.$refs.slide;
+        let slidesEls = swiperEl.querySelectorAll('.Boss-slide');
 
         // 2.保存个数
         this.slideCount = slidesEls.length;

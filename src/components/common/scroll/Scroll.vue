@@ -59,6 +59,7 @@ export default {
       this.scroll && this.scroll.scrollTo(endpoint_x, endpoint_y, time);
     },
     refresh() {
+      console.log('防抖函数起效');
       this.scroll && this.scroll.refresh();
     },
     finishPullUp() {
